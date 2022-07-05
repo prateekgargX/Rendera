@@ -14,6 +14,10 @@
     #define ALIGN_WIDTH 16
     typedef float Utype;
     typedef xsimd::sse4_2 UArch;
+    #define DOUBLE_TO_FLOAT_REVERT 0
 #endif 
+
+//Float is preferred to maximize cache efficiency.
+//So regardless of whethere AVX is available, Floats are used.
 
 #endif

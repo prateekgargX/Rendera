@@ -5,9 +5,7 @@
 #include <cmath>
 #include <xsimd/xsimd.hpp>
 #include <config.hpp>
-#define ALPHA_ 0 //include alpha or not.
-
-//template<class T, class A = xsimd::default_arch>
+#define ALPHA_ 0 
 template<class T = UType, class A = UArch>
 class alignas(ALIGN_WIDTH) vec4{
     public:
@@ -45,14 +43,14 @@ class alignas(ALIGN_WIDTH) vec4{
             return sum(temp); //returns the sum of first 3 elements.
         }
         
-        constexpr T norm(const bool alpha=ALPHA_) const{ //__GNUC__
+        CONSTEXPR_ T norm(const bool alpha=ALPHA_) const{ //__GNUC__
             return sqrt(dot(*this));
         }
 
-        constexpr static T angle(const vec4& v1,const vec4& v2,const bool alpha=ALPHA_){//__GNUC__
+        CONSTEXPR_ static T angle(const vec4& v1,const vec4& v2,const bool alpha=ALPHA_){//__GNUC__
             return acos(v1.dot(v2)/(v1.norm(alpha)*v2.norm(alpha)));
         }
-        constexpr vec4 unit() const{//__GNUC__
+        CONSTEXPR_ vec4 unit() const{//__GNUC__
             return *this/this->norm();
         }
 

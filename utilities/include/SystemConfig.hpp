@@ -20,4 +20,10 @@
 //Float is preferred to maximize cache efficiency.
 //So regardless of whethere AVX is available, Floats are used.
 
+#ifdef _GLIBCXX_CMATH
+    #define CONSTEXPR_ constexpr
+#else
+    #define CONSTEXPR_  
+#endif 
+
 #endif

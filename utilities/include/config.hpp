@@ -9,6 +9,7 @@ SystemConfig : Contains preprocessor directives to control architecture
                -ALIGN_WIDTH: Sets according to dtype used. 32 for doubles and 16 for floates.
                -UArch: Architecture to be used.
                -UType: Dtype to be used.
+               -CONSTEXPR_: Switch constexpr if available in cmath.
 
 UserConfig  :  Contains Macro values set by user.
                -USE_DOUBLE: sets to 1 if user forces to use double.

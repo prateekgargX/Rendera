@@ -4,18 +4,11 @@
 #include <ostream>
 #include <cmath>
 #include <xsimd/xsimd.hpp>
-
+#include <config.hpp>
 #define ALPHA_ 0 //include alpha or not.
 
-#if XSIMD_WITH_AVX512BW || XSIMD_WITH_AVX512DQ || XSIMD_WITH_AVX512F
-    #define ALIGN_WIDTH 64
-#elif XSIMD_WITH_FMA3_AVX2 || XSIMD_WITH_AVX2 || XSIMD_WITH_FMA3_AVX || XSIMD_WITH_AVX
-    #define ALIGN_WIDTH 32
-#elif XSIMD_WITH_SSE4_2 || XSIMD_WITH_SSE4_1 || XSIMD_WITH_SSSE3 || XSIMD_WITH_SSE3 || XSIMD_WITH_SSE2
-    #define ALIGN_WIDTH 16
-#endif
-
-template<class T, class A = xsimd::default_arch>
+//template<class T, class A = xsimd::default_arch>
+template<class T = UType, class A = UArch>
 class alignas(ALIGN_WIDTH) vec4{
     public:
         constexpr vec4() : m_v{0,0,0,0} {}

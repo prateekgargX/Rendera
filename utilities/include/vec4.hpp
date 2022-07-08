@@ -15,7 +15,7 @@ class alignas(ALIGN_WIDTH) vec4{
         constexpr vec4(T x,T y,T z,T w) : m_v{x,y,z,w} {}
         constexpr explicit vec4(xsimd::batch<T,A> x){x.store_aligned(m_v);}
         
-        //getters
+        // getters
         constexpr T x() const{
             return m_v[0];
         }
@@ -32,7 +32,7 @@ class alignas(ALIGN_WIDTH) vec4{
             return m_v[3];
         }
         
-        //indexing operation
+        // indexing operation
         constexpr T const & operator[](std::size_t i ) const{
             return m_v[i];
         }

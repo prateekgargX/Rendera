@@ -4,7 +4,7 @@
 #include <ostream>
 #include <cmath>
 #include <xsimd/xsimd.hpp>
-#include <config.hpp>
+#include "config.hpp"
 #define ALPHA_ 0 
 template<class T = UType, class A = UArch>
 class alignas(ALIGN_WIDTH) vec4{
@@ -43,14 +43,14 @@ class alignas(ALIGN_WIDTH) vec4{
             return sum(temp); //returns the sum of first 3 elements.
         }
         
-        CONSTEXPR_ T norm(const bool alpha=ALPHA_) const{ //__GNUC__
+        CONSTEXPR_CMATH T norm() const{
             return sqrt(dot(*this));
         }
 
-        CONSTEXPR_ static T angle(const vec4& v1,const vec4& v2,const bool alpha=ALPHA_){//__GNUC__
+        CONSTEXPR_CMATH static T angle(const vec4& v1,const vec4& v2,const bool alpha=ALPHA_){
             return acos(v1.dot(v2)/(v1.norm(alpha)*v2.norm(alpha)));
         }
-        CONSTEXPR_ vec4 unit() const{//__GNUC__
+        CONSTEXPR_CMATH vec4 unit() const{
             return *this/this->norm();
         }
 
